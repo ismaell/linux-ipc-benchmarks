@@ -1,7 +1,7 @@
 # Public domain Makefile template derived from
 #   http://jingram.sdf.org/2014/11/09/a-makefile-template-for-simple-c-projects.html
 
-.DEFAULT_GOAL = all
+all:
 
 PROGS := pipes eventfd af_unix af_inet_loopback
 SRCS := $(addsuffix .c, $(PROGS)) main.c
