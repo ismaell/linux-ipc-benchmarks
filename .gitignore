@@ -2,3 +2,5 @@
 *.o
 eventfd
 pipes
+af_inet_loopback
+af_unix
