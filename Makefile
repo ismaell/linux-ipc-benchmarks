@@ -25,4 +25,4 @@ clean:
 	rm -f $(OBJS) $(DEPS)
 
 cleaner: clean
-	rm -rf $(PROGS)
+	rm -f $(PROGS)
