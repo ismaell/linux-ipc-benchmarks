@@ -4,16 +4,16 @@
 all:
 
 PROGS := pipes eventfd af_unix af_inet_loopback
-SRCS := $(addsuffix .c, $(PROGS)) main.c
 
 CC := cc
 CFLAGS := -std=gnu11 -Wall -Wextra -Werror -MMD
 LDFLAGS :=
+LDLIBS := $(obj-common)
+obj-common = main.o
 
-$(PROGS): $(addsuffix .o, $@) main.o
+$(PROGS): $(obj-common)
 
-OBJS = $(SRCS:.c=.o)
-DEPS = $(SRCS:.c=.d)
+DEPS = $(PROGS:=.d) $(obj-common:.o=.d)
 
 .PHONY: all
 all: $(PROGS)
@@ -22,7 +22,7 @@ all: $(PROGS)
 
 .PHONY: clean cleaner
 clean:
-	rm -f $(OBJS) $(DEPS)
+	rm -f $(DEPS) $(obj-common)
 
 cleaner: clean
 	rm -f $(PROGS)
